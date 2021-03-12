@@ -1077,11 +1077,12 @@ ARM Macro Assembler    Page 17
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
 interwork --depend=.\objects\startup_mk64f12.d -o.\objects\startup_mk64f12.o -I
-.\RTE\_Target_1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Core\Include -IC:\K
-eil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include --predefine="__UVISIO
-N_VERSION SETA 531" --predefine="_RTE_ SETA 1" --predefine="MK64FN1M0xxx12 SETA
- 1" --predefine="_RTE_ SETA 1" --list=.\listings\startup_mk64f12.lst RTE\Device
-\MK64FN1M0xxx12\startup_MK64F12.s
+.\RTE\_Target_1 -IC:\Users\vggam\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\
+Core\Include -IC:\Users\vggam\AppData\Local\Arm\Packs\Keil\Kinetis_K60_DFP\1.5.
+0\Device\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SET
+A 533" --predefine="_RTE_ SETA 1" --predefine="MK64FN1M0xxx12 SETA 1" --predefi
+ne="_RTE_ SETA 1" --list=.\listings\startup_mk64f12.lst RTE\Device\MK64FN1M0xxx
+12\startup_MK64F12.s
 
 
 
@@ -2628,4 +2629,4 @@ Symbol: __use_two_region_memory
       None
 Comment: __use_two_region_memory unused
 3 symbols
-480 symbols in table
+481 symbols in table
