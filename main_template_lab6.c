@@ -8,11 +8,33 @@
 
 #include "MK64F12.h"
 #include "uart.h"
+#include "DriveMotor.h"
 #include "PWM.h"
+#include "Steering.h"
 
 void delay(int del);
 
-
+int main(void)
+{
+	uart0_init();
+	DriveMotor_init();
+	Steering_init();
+	
+	//DriveMotorA_set_duty_cycle(20,DIRECTION_FORWARD);
+	//DriveMotorA_enable(1);
+	//DriveMotorB_set_duty_cycle(20,DIRECTION_FORWARD);
+	//DriveMotorB_enable(1);
+	
+	// duty cycle = pulse length / period
+	// duty cycle = 1.5ms / 20ms = .075 => 7.5
+	Steering_set_duty_cycle(6.75);
+	
+	for(;;)
+	{
+		
+	
+	}
+}
 
 /* Earlier, non-car parts
 int main(void) {
@@ -25,7 +47,7 @@ int main(void) {
 	
 	// Generate 20% duty cycle at 10kHz
 	//FTM0_set_duty_cycle(40, 10000, 1);
-	/*
+	
 	while(1)
 	{
 		for(int i = 0; i <= 100; i++)
@@ -50,7 +72,7 @@ int main(void) {
 			delay(10);
 		}
 	}
-	*/ /*
+	
 	// enable port D clocks
 	SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;
 	

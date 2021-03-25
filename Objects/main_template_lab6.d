@@ -7,4 +7,6 @@
 .\objects\main_template_lab6.o: C:\Users\chblu\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h
 .\objects\main_template_lab6.o: C:\Users\chblu\AppData\Local\Arm\Packs\Keil\Kinetis_K60_DFP\1.5.0\Device\Include\system_MK64F12.h
 .\objects\main_template_lab6.o: uart.h
+.\objects\main_template_lab6.o: DriveMotor.h
 .\objects\main_template_lab6.o: PWM.h
+.\objects\main_template_lab6.o: Steering.h

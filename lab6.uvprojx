@@ -413,6 +413,26 @@
               <FileType>5</FileType>
               <FilePath>.\uart.h</FilePath>
             </File>
+            <File>
+              <FileName>DriveMotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DriveMotor.c</FilePath>
+            </File>
+            <File>
+              <FileName>DriveMotor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\DriveMotor.h</FilePath>
+            </File>
+            <File>
+              <FileName>Steering.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Steering.c</FilePath>
+            </File>
+            <File>
+              <FileName>Steering.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Steering.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
