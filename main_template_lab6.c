@@ -12,6 +12,9 @@
 
 void delay(int del);
 
+
+
+/* Earlier, non-car parts
 int main(void) {
 	// Initialize UART and PWM
 	uart0_init();
@@ -21,53 +24,152 @@ int main(void) {
 	uart0_put("Running... \n\r");
 	
 	// Generate 20% duty cycle at 10kHz
-	FTM0_set_duty_cycle(20, 10000, 1);
-	
-	for(;;) ;  //then loop forever
-	
-	
-	/* Part 2 - UNCOMMENT THIS
-	for(;;)  //loop forever
+	//FTM0_set_duty_cycle(40, 10000, 1);
+	/*
+	while(1)
 	{
-		uint16_t dc = 0;
-		uint16_t freq = 10000; // Frequency = 10 kHz 
-		uint16_t dir = 0;
-		char c = 48;
-		int i=0;
-		
-		// 0 to 100% duty cycle in forward direction
-		for (i=0; i<100; i++) {
-		    // INSERT CODE HERE
-			
+		for(int i = 0; i <= 100; i++)
+		{
+			FTM0_set_duty_cycle(i, 10000, 1);
+			delay(10);
+		}
+		for(int i = 100; i >=0; i--)
+		{
+			FTM0_set_duty_cycle(i, 10000, 1);
 			delay(10);
 		}
 		
-		// 100% down to 0% duty cycle in the forward direction
-		for (i=100; i>=0; i--) {
-		    // INSERT CODE HERE
-			
+		for(int i = 0; i <= 100; i++)
+		{
+			FTM0_set_duty_cycle(i, 10000, 0);
 			delay(10);
 		}
-		
-		// 0 to 100% duty cycle in reverse direction
-		for (i=0; i<100; i++) {
-		    // INSERT CODE HERE
-			
+		for(int i = 100; i >=0; i--)
+		{
+			FTM0_set_duty_cycle(i, 10000, 0);
 			delay(10);
 		}
-		
-		// 100% down to 0% duty cycle in the reverse direction
-		for (i=100; i>=0; i--) {
-		    // INSERT CODE HERE
-			
-			delay(10);
-		}
-
 	}
-	*/
+	*/ /*
+	// enable port D clocks
+	SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;
+	
+	// configure signal multiplexer for port d gpio pins
+	PORTD_PCR0 &= ~(PORT_PCR_MUX_MASK);
+	PORTD_PCR0 |= PORT_PCR_MUX(1);
+	PORTD_PCR1 &= ~(PORT_PCR_MUX_MASK);
+	PORTD_PCR1 |= PORT_PCR_MUX(1);
+	PORTD_PCR2 &= ~(PORT_PCR_MUX_MASK);
+	PORTD_PCR2 |= PORT_PCR_MUX(1);
+	PORTD_PCR3 &= ~(PORT_PCR_MUX_MASK);
+	PORTD_PCR3 |= PORT_PCR_MUX(1);
+	
+	// configure gpio pins for output
+	for (int i = 0; i < 4; i++)
+	GPIOD_PDDR |= (1 << i);
+	
+	int forward = 1;
+	int phase = 0;
+	int iter = 0;
+	
+	
+	while(1)
+	{
+		// turn off all coils
+		for (int i = 0; i < 4; i++)
+			GPIOD_PCOR = (1 << i);
+		
+		// set one pin high at a time
+		if (forward)
+		{
+			switch(phase)
+			{
+				case 0:
+					// coil A
+					GPIOD_PSOR = (1 << 0);
+					phase++;
+					break;
+				
+				case 1:
+					// coil B
+					GPIOD_PSOR = (1 << 1);
+					phase++;
+					break;
+				
+				case 2:
+					// coil C
+					GPIOD_PSOR = (1 << 2);
+					phase++;
+					break;
+				
+				case 3:
+					// coil D
+					GPIOD_PSOR = (1 << 3);
+					phase = 0;
+					if (iter == 1)
+					{
+					forward = 0;
+					iter = 0;
+					}
+					else
+						iter++;
+					break;
+				default:
+					// shouldnt get here
+					for(;;);
+					break;
+			}
+		}
+		
+		else
+		{
+			
+			// reverse
+			switch(phase)
+			{
+				case 0:
+					// coil D
+					GPIOD_PSOR = (1 << 3);
+					phase++;
+					break;
+				
+				case 1:
+					// coil C
+					GPIOD_PSOR = (1 << 2);
+					phase++;
+					break;
+				
+				case 2:
+					// coil B
+					GPIOD_PSOR = (1 << 1);
+					phase++;
+					break;
+				
+				case 3:
+					// coil A
+					GPIOD_PSOR = (1 << 0);
+					phase = 0;
+				if (iter == 1)
+				{
+					forward = 1;
+					iter = 0;
+				}
+				else{
+				iter++;
+				}
+					break;
+				default:
+					// shouldnt get here
+					for(;;);
+					break;
+			}
+		
+		}
+		delay(10);
+	}
 	return 0;
 }
-
+*/
 
 /**
  * Waits for a delay (in milliseconds)
@@ -75,7 +177,7 @@ int main(void) {
  * del - The delay in milliseconds
  */
 void delay(int del){
-	int i;
+	volatile int i;
 	for (i=0; i<del*50000; i++){
 		// Do nothing
 	}

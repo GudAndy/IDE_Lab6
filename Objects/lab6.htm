@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\lab6.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\lab6.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Mar 12 09:43:06 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Mar 19 13:59:37 2021
 <BR><P>
-<H3>Maximum Stack Usage =         12 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =          8 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; FTM0_set_duty_cycle
+__rt_entry_sh &rArr; __user_setup_stackheap
 <P>
 <H3>
 Functions with no stack information
@@ -246,8 +246,8 @@ Global Symbols
 <P><STRONG><a name="[9f]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[70]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; FTM0_set_duty_cycle
+<BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; exit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -654,22 +654,22 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7d]"></a>FTM0_set_duty_cycle</STRONG> (Thumb, 50 bytes, Stack size 12 bytes, pwm.o(i.FTM0_set_duty_cycle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = FTM0_set_duty_cycle
+<P><STRONG><a name="[63]"></a>SystemInit</STRONG> (Thumb, 136 bytes, Stack size 0 bytes, system_mk64f12.o(i.SystemInit))
+<BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(.text)
+</UL>
+<P><STRONG><a name="[7d]"></a>delay</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main_template_lab6.o(i.delay))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[63]"></a>SystemInit</STRONG> (Thumb, 136 bytes, Stack size 0 bytes, system_mk64f12.o(i.SystemInit))
-<BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(.text)
-</UL>
-<P><STRONG><a name="[71]"></a>main</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, main_template_lab6.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = main &rArr; FTM0_set_duty_cycle
+<P><STRONG><a name="[71]"></a>main</STRONG> (Thumb, 338 bytes, Stack size 0 bytes, main_template_lab6.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = main &rArr; delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart0_put
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart0_init
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FTM0_set_duty_cycle
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FTM0_init
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
