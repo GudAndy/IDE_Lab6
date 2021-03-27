@@ -20,14 +20,14 @@ int main(void)
 	DriveMotor_init();
 	Steering_init();
 	
-	//DriveMotorA_set_duty_cycle(20,DIRECTION_FORWARD);
-	//DriveMotorA_enable(1);
-	//DriveMotorB_set_duty_cycle(20,DIRECTION_FORWARD);
-	//DriveMotorB_enable(1);
+	DriveMotorA_set_duty_cycle(50,DIRECTION_FORWARD);
+	DriveMotorA_enable(0);
+	DriveMotorB_set_duty_cycle(50,DIRECTION_FORWARD);
+	DriveMotorB_enable(0);
 	
 	// duty cycle = pulse length / period
 	// duty cycle = 1.5ms / 20ms = .075 => 7.5
-	Steering_set_duty_cycle(6.75);
+	Steering_set_duty_cycle(5);
 	
 	for(;;)
 	{
